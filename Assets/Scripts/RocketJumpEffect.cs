@@ -15,6 +15,7 @@ public class RocketJumpEffect : BaseTokenEffect
 
     protected void OnDestroy()
     {
+        gameObject.GetComponent<PlayerController>().m_RocketJumpTime = 0f;
         gameObject.GetComponent<PlayerController>().m_JetPack.SetActive(false);
         gameObject.GetComponent<PlayerController>().m_RocketJumpIcone.SetActive(false);
     }

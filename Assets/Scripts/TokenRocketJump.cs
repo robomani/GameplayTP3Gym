@@ -13,7 +13,7 @@ public class TokenRocketJump : MonoBehaviour {
             if(a_Other.GetComponent<RocketJumpEffect>())
             {
                 a_Other.GetComponent<PlayerController>().m_RocketJumpTime += 5f;
-                a_Other.GetComponent<PlayerController>().m_RocketJumpTimeText.text = gameObject.GetComponent<PlayerController>().m_RocketJumpTime.ToString();
+                a_Other.GetComponent<PlayerController>().m_RocketJumpTimeText.text = a_Other.GetComponent<PlayerController>().m_RocketJumpTime.ToString();
             }
             else
             {
