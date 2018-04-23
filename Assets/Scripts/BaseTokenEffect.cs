@@ -13,6 +13,10 @@ public class BaseTokenEffect : MonoBehaviour
 
     protected void Update()
     {
+        if(gameObject.GetComponent<PlayerController>().m_ResetReady)
+        {
+            Destroy(this);
+        }
         if (Input.GetKeyDown(KeyCode.R))
         {
             Destroy(this);

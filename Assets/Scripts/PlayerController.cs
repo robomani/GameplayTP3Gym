@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     public int m_MaxClones = 10;
     public GameObject m_PrefabToClone;
     public GameObject[] m_CloneArray;
-    public GameObject m_CloneIcone;
+    //public GameObject m_CloneIcone;
     private GameObject m_PrimeBody;
 
     //RocketJump PowerUp
@@ -40,7 +40,8 @@ public class PlayerController : MonoBehaviour
 
     //Reset PowerUp
     public bool m_ResetReady = false;
-    public GameObject m_ResetIcone;
+    private float m_ResetTime = 0.5f;
+    //public GameObject m_ResetIcone;
 
     void Start ()
     {
@@ -56,7 +57,6 @@ public class PlayerController : MonoBehaviour
         {
             Debug.LogError("No RigidBody for a clone");
         }
-        //m_OriginalSize = transform.localScale;
     }
 	
 
@@ -160,7 +160,19 @@ public class PlayerController : MonoBehaviour
             //m_RocketJumpUses = 0;
             //m_ShrinkUses = 0;
         }
-
+        if (m_ResetReady)
+        {
+            if (m_ResetTime <= 0)
+            {
+                m_ResetTime = 0.5f;
+                m_ResetReady = false;
+            }
+            else
+            {
+                m_ResetTime -= Time.deltaTime;
+            }
+            
+        }
 	}
 
     private void OnTriggerEnter(Collider a_Other)
