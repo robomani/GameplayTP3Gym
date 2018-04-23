@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2017
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameplayTP3Gym.Plugins", "GameplayTP3Gym.Plugins.csproj", "{57D035DE-4D69-985A-29DD-372BCD9D9584}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameplayTP3Gym", "GameplayTP3Gym.csproj", "{1E972EB5-4552-A8BE-39E6-72CCC6311090}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{57D035DE-4D69-985A-29DD-372BCD9D9584}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57D035DE-4D69-985A-29DD-372BCD9D9584}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57D035DE-4D69-985A-29DD-372BCD9D9584}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57D035DE-4D69-985A-29DD-372BCD9D9584}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E972EB5-4552-A8BE-39E6-72CCC6311090}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E972EB5-4552-A8BE-39E6-72CCC6311090}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E972EB5-4552-A8BE-39E6-72CCC6311090}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E972EB5-4552-A8BE-39E6-72CCC6311090}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

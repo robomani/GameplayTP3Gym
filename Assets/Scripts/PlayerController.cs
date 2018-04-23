@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public float m_Speed = 10f;
     public float m_TurnSpeed = 5f;
     public float m_JumpForce = 10f;
+    private bool m_Grounded = true;
     private Rigidbody m_RigidBody;
 
     //Clone PowerUp
@@ -22,9 +24,11 @@ public class PlayerController : MonoBehaviour
 
     //RocketJump PowerUp
     public float m_RocketJumpTime = 0f;
-    public float m_RocketJumpPower = 15f;
+    public float m_RocketJumpPower = 5f;
     //public float m_RocketJumpChargeTime = 10f;
+    public GameObject m_JetPack;
     public GameObject m_RocketJumpIcone;
+    public Text m_RocketJumpTimeText;
 
     //Shrink PowerUp
     //public int m_ShrinkUses = 0;
@@ -78,9 +82,20 @@ public class PlayerController : MonoBehaviour
             transform.rotation = originalRotation * Quaternion.AngleAxis(m_TurnSpeed, Vector3.up);
         }
 
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
+        if(Input.GetKeyDown(KeyCode.Space) && m_Grounded)
+        {  
             m_RigidBody.AddForce(transform.up * m_JumpForce);
+            m_Grounded = false;
+        }
+        else if(Input.GetKey(KeyCode.Space) && !m_Grounded && m_RocketJumpTime > 0)
+        {
+            m_RigidBody.AddForce(transform.up * m_RocketJumpPower);
+            m_RocketJumpTime -= Time.deltaTime;
+            m_RocketJumpTimeText.text = m_RocketJumpTime.ToString();
+            if (m_RocketJumpTime <= 0)
+            {
+                Destroy(gameObject.GetComponent<RocketJumpEffect>());
+            }
         }
 
         if(Input.GetKeyDown(KeyCode.C) && m_CloneUses > 0 && m_MaxClones > m_NBRClones && m_Prime)
@@ -142,9 +157,18 @@ public class PlayerController : MonoBehaviour
 
             //m_CloneUses = 0;
             //m_ResetReady = false;
-            m_RocketJumpUses = 0;
+            //m_RocketJumpUses = 0;
             //m_ShrinkUses = 0;
         }
 
 	}
+
+    private void OnTriggerEnter(Collider a_Other)
+    {
+        if (a_Other.tag == "Ground")
+        {
+            m_Grounded = true;
+        }
+    }
+
 }
